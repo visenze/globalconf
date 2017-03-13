@@ -109,7 +109,7 @@ func (g *GlobalConf) ParseSet(flagSetName string, set *flag.FlagSet) {
 			return
 		}
 
-		val, found := g.dict.GetString(flagSetName, f.Name)
+		val, found := g.dict.GetString(flagSetName, strings.ToLower(f.Name))
 		if found {
 			set.Set(f.Name, val)
 		}
@@ -136,7 +136,7 @@ func (g *GlobalConf) Parse() {
 				return
 			}
 
-			val, found := g.dict.GetString(name, f.Name)
+			val, found := g.dict.GetString(name, strings.ToLower(f.Name))
 			if found {
 				set.Set(f.Name, val)
 			}
